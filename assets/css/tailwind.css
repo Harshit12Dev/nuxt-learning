@@ -1,0 +1,17 @@
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply custom styles */
+body {
+    background-color: #f8fafc; /* Replace with your desired background color */
+}
+
+/* Define custom components */
+.btn {
+    @apply bg-[#12b488] text-white px-3 py-2 rounded-md text-sm;
+}
+.card{
+    @apply p-3 rounded-md bg-white shadow-md h-full
+}
