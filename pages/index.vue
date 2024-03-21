@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+definePageMeta({
+    middleware: 'auth'
+})</script>
 <template>
     <div>
         <h2>Home</h2>
