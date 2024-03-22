@@ -1,7 +1,10 @@
 <script setup>
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 definePageMeta({
-    layout: 'products'
+    layout: 'products',
+    middleware: 'auth'
 })
 
 // fetc h products
@@ -16,6 +19,9 @@ useHead({
         }
     ]
 })
+// if (!localStorage.getItem('authtoken')) {
+//     router.push('/login')
+// }
 </script>
 <template>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">

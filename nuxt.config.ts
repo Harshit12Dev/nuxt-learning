@@ -1,12 +1,13 @@
 import type { Link } from "#build/components";
 
-import type { Title } from "#build/components";
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules:['@nuxtjs/tailwindcss'],
+  modules:['@nuxtjs/tailwindcss','@pinia/nuxt'],
  css: ['~/assets/css/tailwind.css'],
+ pinia : {
+    storesDirs: ['./stores/**'],
+ },
  app :{
   head:{
     title : 'Nuxt Dojo',

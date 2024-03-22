@@ -1,28 +1,50 @@
 <script setup>
+// import { useStore } from 'vuex'
+// import { useRouter } from 'vue-router'
+
+// const store = useStore()
+// const router = useRouter()
+const userStore = useUserStore()
+
 let email = "";
 let password = "";
 
 const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-        let data = {
-            email: email,
-            password: password
-        }
-        const response = await $fetch('http://localhost:5000/login', {
-            method: 'POST',
-            body: data
-        })
-        console.log(response.token);
-        if (response.token) {
-            localStorage.setItem('authtoken', response.token)
-        }
-    } catch (e) {
-        console.log(e)
-    }
 
-    console.log("Function called");
+    await userStore.signIn({
+        username: 'kminchelle',
+        password: '0lelplR'
+    })
+
+    await navigateTo('/products', { replace: true })
+    // e.preventDefault();
+    // try {
+    //     let data = {
+    //         email: email,
+    //         password: password
+    //     }
+    //     const response = await $fetch('http://localhost:5000/login', {
+    //         method: 'POST',
+    //         body: data
+    //     })
+    //     if (response.token) {
+    //         // If a token is received from the server, store it in localStorage
+    //         localStorage.setItem('authtoken', response.token)
+    //         // Dispatch the login action to update the Vuex store
+    //         store.dispatch('auth/login', { token: response.token })
+    //         // Redirect the user to another page, e.g., the product page
+    //         router.push('/products')
+    //     }
+    // } catch (e) {
+    //     alert(e.message)
+    // }
+
 }
+
+// if (localStorage.getItem('authtoken')) {
+//     router.push('/products')
+// }
 
 </script>
 

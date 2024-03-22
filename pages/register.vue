@@ -1,10 +1,11 @@
 <script setup>
 import axios from 'axios'
-
+import { useRouter } from 'vue-router'
 let email = '';
 let password = '';
 let username = ''
 
+let router = useRouter()
 const handleSubmit = async () => {
     try {
         // Make an HTTP request to your register API
@@ -18,10 +19,11 @@ const handleSubmit = async () => {
             method: 'POST',
             body: data
         })
-
-        console.log(response);
-        if (response) {
-
+        console.log(response.status);
+        if (response.status === 201) {
+            {
+                router.push('/login')
+            }
         }
     } catch (error) {
         console.error('Error registering user:', error);
@@ -39,10 +41,7 @@ const handleSubmit = async () => {
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <h1
-                        class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        Create and account
-                    </h1>
+
                     <form class="space-y-4 md:space-y-6" action="#">
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your

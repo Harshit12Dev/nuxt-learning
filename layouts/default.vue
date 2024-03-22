@@ -1,3 +1,10 @@
+<script setup>
+const signOut = () => {
+    userStore.logOut()
+    useRouter().go(1)
+}
+
+</script>
 <template>
     <div>
         <header class="shadow-sm bg-white">
